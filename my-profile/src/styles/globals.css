@@ -1,0 +1,94 @@
+/* ── Global Reset & CSS Variables ─────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-primary:     #0f1117;
+  --bg-card:        #1a1d27;
+  --accent:         #00e5b0;
+  --accent-dim:     rgba(0, 229, 176, 0.2);
+  --accent-border:  rgba(0, 229, 176, 0.3);
+  --text-primary:   #e0e0e0;
+  --text-muted:     #888;
+  --text-faint:     #555;
+  --border-subtle:  rgba(255, 255, 255, 0.06);
+  --font-sans:      'Segoe UI', system-ui, sans-serif;
+  --font-mono:      'JetBrains Mono', 'Fira Code', monospace;
+  --section-max:    1100px;
+  --section-pad:    4rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ── Shared Section Layout ────────────────────────────────── */
+.section {
+  padding: var(--section-pad);
+  max-width: var(--section-max);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section Heading ──────────────────────────────────────── */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.section-heading__icon {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.section-heading__dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+}
+
+.section-heading__label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Background Decorative Squares ───────────────────────── */
+.bg-decor {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-decor__square {
+  position: absolute;
+  border: 1px solid rgba(0, 229, 176, 0.07);
+  border-radius: 4px;
+}

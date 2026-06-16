@@ -1,0 +1,68 @@
+/* ── About Section ────────────────────────────────────────── */
+.about {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.about__profile {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.about__avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00e5b0;
+  display: block;
+  margin: 0 auto;
+}
+
+.about__name {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.about__socials {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.about__social-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 12px;
+  background: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.about__social-btn:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+.about__text h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.about__text p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.about__text strong {
+  color: var(--text-primary);
+}

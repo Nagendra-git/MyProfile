@@ -1,0 +1,40 @@
+/* ── Skills Section ───────────────────────────────────────── */
+.skills__grid {
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+}
+
+.skill-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.skill-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.skill-card__icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.skill-card__name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ccc;
+}
+
+.skill-card__bar {
+  width: 30px;
+  height: 2px;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
