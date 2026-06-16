@@ -41,7 +41,7 @@ export default function Contact() {
       </section>
 
       <footer className="footer">
-        © 2026 Nagendra Burugula · Built with React
+        © 2026 Nagendra Burusu · Built with React
       </footer>
     </>
   );

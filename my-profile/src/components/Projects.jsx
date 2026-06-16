@@ -21,7 +21,6 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              <button className="project-card__btn">ACCESS →</button>
             </div>
           </div>
         ))}
