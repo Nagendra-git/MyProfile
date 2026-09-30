@@ -1,0 +1,24 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; font-family: var(--font); font-size: 1rem; line-height: 1.65;
+  color: var(--text); background-color: var(--bg);
+  background-image: radial-gradient(rgba(159, 176, 191, 0.13) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+h1, h2, h3 { line-height: 1.15; margin: 0 0 0.5em; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+h3 { font-size: 1.15rem; }
+p { margin: 0 0 1em; max-width: 68ch; }
+a { color: var(--blue); }
+a:hover { color: var(--amber); }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+.container { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: 1.25rem; }
+.section { padding-block: 3.5rem; }
+.skip-link { position: absolute; left: -999px; top: 0; background: var(--amber); color: #111; padding: 0.5rem 1rem; z-index: 100; }
+.skip-link:focus { left: 0; }
+.more { margin-top: 1.5rem; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}

@@ -1,36 +1,31 @@
-import "../styles/Navbar.css";
-import { NAV } from "../data/constants";
+import { useState } from 'react'
+import { NavLink, Link } from 'react-router-dom'
+import { profile } from '../data/profile.js'
 
-export default function Navbar({ active, scrolled, onNavClick }) {
+const links = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/projects', label: 'Projects' },
+  { to: '/experience', label: 'Experience' },
+  { to: '/lab', label: 'Engineering Lab' },
+]
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false)
+  const close = () => setOpen(false)
   return (
-    <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
-      <div className="navbar__brand">
-        <h2 className="navbar__name">Nagendra Burusu</h2>
-        <span className="navbar__role">Software Engineer</span>
+    <header className="navbar">
+      <div className="container navbar__inner">
+        <Link to="/" className="navbar__brand" onClick={close}>{profile.name}</Link>
+        <button className="navbar__toggle" aria-expanded={open} aria-controls="site-nav" onClick={() => setOpen((o) => !o)}>
+          {open ? 'Close' : 'Menu'}
+        </button>
+        <nav id="site-nav" aria-label="Primary" className={`navbar__links${open ? ' is-open' : ''}`}>
+          {links.map((l) => (
+            <NavLink key={l.to} to={l.to} end={l.end} onClick={close}>{l.label}</NavLink>
+          ))}
+          <a className="btn btn--small" href={`mailto:${profile.email}`}>Contact</a>
+        </nav>
       </div>
-
-      <div className="navbar__links">
-        {NAV.map((item) => (
-          <button
-            key={item}
-            className={`navbar__link ${
-              active === item ? "navbar__link--active" : ""
-            }`}
-            onClick={() => onNavClick(item)}
-          >
-            {item}
-          </button>
-        ))}
-
-        <a
-          href="/Nagendra_Burusu_Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="navbar__resume"
-        >
-          Resume
-        </a>
-      </div>
-    </nav>
-  );
+    </header>
+  )
 }
