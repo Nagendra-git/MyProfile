@@ -11,7 +11,8 @@ import { projects } from '../data/projects.js'
 import { experience } from '../data/experience.js'
 import { skills } from '../data/skills.js'
 import { experiments } from '../data/experiments.js'
-
+import profileImage from '../assets/profile.png'
+import '../styles/about.css'
 export default function Home() {
   return (
     <>
@@ -19,7 +20,14 @@ export default function Home() {
       <Stats />
       <section className="container section" id="about">
         <SectionHeader title="About" />
-        <div className="prose">{profile.about.map((p) => <p key={p}>{p}</p>)}</div>
+        <div className="about-layout"> 
+          <div className="prose"> 
+            {profile.about.map((paragraph) => ( <p key={paragraph}>{paragraph}</p> ))} 
+          </div> 
+          <div className="about-photo">
+             <img src={profileImage} alt="Nagendra Burusu" />
+          </div> 
+        </div>
       </section>
       <section className="container section">
         <SectionHeader title="Selected projects" />

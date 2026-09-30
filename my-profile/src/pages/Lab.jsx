@@ -5,25 +5,87 @@ import { experiments } from '../data/experiments.js'
 
 export default function Lab() {
   const [params, setParams] = useSearchParams()
-  const selected = experiments.find((e) => e.id === params.get('exp')) ?? experiments[0]
+
+  const selected =
+    experiments.find((experiment) => experiment.id === params.get('exp')) ??
+    experiments[0]
+
+  const handleSelect = (id) => {
+    setParams({ exp: id }, { replace: true })
+  }
 
   return (
     <section className="container section">
-      <SectionHeader as="h1" title="Engineering Lab" intro="Pick an experiment to see the question, the approach and where the result stands." />
+      <SectionHeader
+        as="h1"
+        title="Engineering Lab"
+        intro="Practical experiments exploring performance, scalability, distributed systems, databases, observability, and backend engineering."
+      />
+
       <div className="lab">
         <div className="grid grid--lab">
-          {experiments.map((e) => (
-            <LabCard key={e.id} experiment={e} selected={e.id === selected.id} onSelect={(id) => setParams({ exp: id }, { replace: true })} />
+          {experiments.map((experiment) => (
+            <LabCard
+              key={experiment.id}
+              experiment={experiment}
+              selected={experiment.id === selected.id}
+              onSelect={handleSelect}
+            />
           ))}
         </div>
+
         <article className="card lab-detail" aria-live="polite">
-          <h2>{selected.name}</h2>
+          <div className="lab-detail__header">
+            <div>
+              <span className="eyebrow">Experiment</span>
+              <h2>{selected.name}</h2>
+            </div>
+
+            {selected.status && (
+              <span
+                className={`status status--${selected.status
+                  .toLowerCase()
+                  .replace(/\s+/g, '-')}`}
+              >
+                {selected.status}
+              </span>
+            )}
+          </div>
+
+          {selected.tagline && <p className="lab-detail__tagline">{selected.tagline}</p>}
+
           <dl>
-            <dt>Problem</dt><dd>{selected.problem}</dd>
-            <dt>Approach</dt><dd>{selected.approach}</dd>
-            <dt>Result</dt><dd>{selected.result}</dd>
+            <dt>Problem</dt>
+            <dd>{selected.problem}</dd>
+
+            <dt>Approach</dt>
+            <dd>{selected.approach}</dd>
+
+            <dt>Result</dt>
+            <dd>{selected.result}</dd>
           </dl>
-          <ul className="tags">{selected.technologies.map((t) => <li key={t}>{t}</li>)}</ul>
+
+          {selected.areas?.length > 0 && (
+            <div className="lab-detail__section">
+              <h3>Areas</h3>
+              <ul className="tags">
+                {selected.areas.map((area) => (
+                  <li key={area}>{area}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {selected.technologies?.length > 0 && (
+            <div className="lab-detail__section">
+              <h3>Technologies</h3>
+              <ul className="tags">
+                {selected.technologies.map((technology) => (
+                  <li key={technology}>{technology}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </article>
       </div>
     </section>
