@@ -3,7 +3,7 @@ export const experience = [
     id: 'nasdaq',
     company: 'ThoughtClan Technologies',
     role: 'Senior Software Developer',
-    duration: 'Jan 2023 – Present',
+    duration: 'Jul 2026 – Present',
     project: 'Nasdaq — EMS / Trading Data Platform',
     projectSlug: 'nasdaq-ems-trading-platform',
     current: true,
