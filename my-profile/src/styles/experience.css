@@ -1,0 +1,48 @@
+.timeline__toggle {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* Keep the existing timeline header layout */
+
+.timeline__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Expand / collapse icon */
+
+.timeline__icon {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Expanded content */
+
+.timeline__details {
+  margin-top: 1rem;
+}
+
+/* Optional: makes the expanded item slightly easier to identify */
+
+.timeline__item--expanded {
+  /* Add styling here later if needed */
+}
+
+/* Keyboard accessibility */
+
+.timeline__toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 4px;
+}

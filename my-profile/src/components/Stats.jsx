@@ -1,20 +1,46 @@
 import { projects } from '../data/projects.js'
 import { experiments } from '../data/experiments.js'
-import { skills } from '../data/skills.js'
 
-// Stats are derived from the data files so they can never drift into invented numbers.
 export default function Stats() {
+  const professionalProjects = projects.filter(
+    (project) => project.category === 'Professional project'
+  )
+
+  const personalProjects = projects.filter(
+    (project) => project.category === 'Personal project'
+  )
+
   const items = [
-    { value: projects.length, label: 'Project case studies' },
-    { value: experiments.length, label: 'Lab experiments' },
-    { value: skills.reduce((n, g) => n + g.items.length, 0), label: 'Technologies used' },
-    { value: skills.length, label: 'Engineering areas' },
+    {
+      value: '4+',
+      label: 'Years of experience',
+    },
+    {
+      value: professionalProjects.length,
+      label: 'Professional projects',
+    },
+    {
+      value: personalProjects.length,
+      label: 'Personal projects',
+    },
+    {
+      value: experiments.length,
+      label: 'Lab experiments',
+    },
   ]
+
   return (
-    <section className="container stats" aria-label="Portfolio at a glance">
-      {items.map((s) => (
-        <div key={s.label} className="stat"><strong>{s.value}</strong><span>{s.label}</span></div>
+    <section
+      className="container stats"
+      aria-label="Professional highlights"
+    >
+      {items.map((stat) => (
+        <div key={stat.label} className="stat">
+          <strong>{stat.value}</strong>
+          <span>{stat.label}</span>
+        </div>
       ))}
     </section>
   )
 }
+

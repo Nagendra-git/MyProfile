@@ -1,12 +1,18 @@
-import SectionHeader from '../components/SectionHeader.jsx'
-import ExperienceTimeline from '../components/ExperienceTimeline.jsx'
-import { experience } from '../data/experience.js'
+import { experience } from '../data/experience'
+import SectionHeader from '../components/SectionHeader'
+import ExperienceTimeline from '../components/ExperienceTimeline'
 
 export default function Experience() {
   return (
     <section className="container section">
-      <SectionHeader as="h1" title="Experience" intro="Described by project context. Update company names and dates in src/data/experience.js." />
+      <SectionHeader
+        as="h1"
+        title="Professional Experience"
+        intro="4+ years of experience building scalable backend systems, APIs, microservices, and distributed applications across healthcare, manufacturing, construction, and financial technology."
+      />
+
       <ExperienceTimeline items={experience} />
     </section>
   )
 }
+
