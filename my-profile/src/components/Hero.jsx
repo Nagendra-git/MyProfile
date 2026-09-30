@@ -1,47 +1,24 @@
-import "../styles/Hero.css";
-import profilePic from "../assets/myprofile.jpg";
+import { Link } from 'react-router-dom'
+import { profile } from '../data/profile.js'
+import EventFlow from './EventFlow.jsx'
 
-export default function Hero({ onScrollTo }) {
+export default function Hero() {
   return (
-    <section id="about" className="hero">
-      {/* Content */}
-      <div className="hero__content">
-        <p className="hero__eyebrow">Java Backend Engineer</p>
-        <h1 className="hero__title">
-          Nagendra
-        </h1>
-        <p className="hero__bio">
-          Software Engineer with 3+ years crafting high-performance enterprise
-          applications. Passionate about distributed systems, O(1) algorithms,
-          and cloud-native architecture.
-        </p>
-        <div className="hero__actions">
-          <button
-            className="hero__btn hero__btn--outline"
-            onClick={() => onScrollTo("Contact")}
-          >
-            Download CV
-          </button>
-          <button
-            className="hero__btn hero__btn--filled"
-            onClick={() => onScrollTo("Projects")}
-          >
-            View Projects
-          </button>
+    <section className="hero">
+      <div className="container hero__inner">
+        <div className="hero__copy">
+          <p className="hero__role">{profile.role} · {profile.location}</p>
+          <h1>{profile.name}</h1>
+          <p className="hero__headline">{profile.headline}</p>
+          <p className="hero__focus">{profile.focus.join(' • ')}</p>
+          <div className="btn-row">
+            <Link className="btn" to="/projects">View Projects</Link>
+            <Link className="btn btn--ghost" to="/lab">Explore Engineering Lab</Link>
+            <a className="btn btn--ghost" href={`mailto:${profile.email}`}>Contact Me</a>
+          </div>
         </div>
-      </div>
-
-      {/* Avatar */}
-      <div className="hero__avatar-wrap">
-        <div className="hero__avatar">
-          {/* Replace the span below with: */}
-             
-          <img src={profilePic} alt="Nagendra Burugula"
-                   style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-         {/* <span className="hero__avatar-emoji">👨‍💻</span> */}
-        </div>
-        <div className="hero__avatar-ring" />
+        <EventFlow />
       </div>
     </section>
-  );
+  )
 }

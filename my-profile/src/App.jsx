@@ -1,38 +1,36 @@
-import { useState, useEffect } from "react";
-import "./styles/globals.css";
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
+import Home from './pages/Home.jsx'
+import Projects from './pages/Projects.jsx'
+import ProjectDetails from './pages/ProjectDetails.jsx'
+import Experience from './pages/Experience.jsx'
+import Lab from './pages/Lab.jsx'
 
-import BgDecor    from "./components/BgDecor";
-import Navbar     from "./components/Navbar";
-import Hero       from "./components/Hero";
-import About      from "./components/About";
-import Skills     from "./components/Skills";
-import Projects   from "./components/Projects";
-import Contact    from "./components/Contact";
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
 
 export default function App() {
-  const [active, setActive]   = useState("About");
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const scrollTo = (id) => {
-    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
-    setActive(id);
-  };
-
   return (
     <>
-      <BgDecor />
-      <Navbar active={active} scrolled={scrolled} onNavClick={scrollTo} />
-      <Hero      onScrollTo={scrollTo} />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+      <ScrollToTop />
+      <a className="skip-link" href="#main">Skip to content</a>
+      <Navbar />
+      <main id="main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectDetails />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/lab" element={<Lab />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </main>
+      <Footer />
     </>
-  );
+  )
 }
